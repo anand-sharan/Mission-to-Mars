@@ -5,6 +5,7 @@
 # Dependencies and Setup
 from flask import Flask, render_template
 from flask_pymongo import PyMongo
+import pymongo
 import scrape_mars
 
 #################################################
@@ -35,6 +36,13 @@ def init_browser():
 #################################################
 app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_app"
 mongo = PyMongo(app)
+
+client = pymongo.MongoClient(app.config["MONGO_URI"])
+
+# Define database and homes collection
+db = client.mars_app
+collection = db.mars
+print(collection)
 
 #################################################
 # Flask Routes

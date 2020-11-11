@@ -1,58 +1,44 @@
-# Mission to Mars
-
-![mission_to_mars](Images/mission_to_mars.png)
-
-In this assignment, the task is to build a web application that scrapes 5 different websites for data related to the Mission to Mars and displays the information in a single HTML page.
-
-The following steps are followed in order to  achieve this objective:
+# Mission-to-Mars
 
 
-## Scraping
+## Background
 
-### NASA Mars News
-
-https://mars.nasa.gov/news/ website was used to get the latest news on Mars mission using BeautifulSoup, splinter, pandas in a jupyter notebook.
-
-### JPL Mars Space Images - Featured Image
-
-https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars was used to scrape the featured image of mars in full resolution.
-
-### Mars Weather
-
-https://twitter.com/marswxreport?lang=en scrape the latest Mars weather tweet from the page. Save the tweet text for the weather report as a variable called `mars_weather`.
+Build a Web Application that Scrapes Various Websites for Data Related to the Mission to Mars and Displays the Information in a Single HTML Page
 
 
-### Mars Facts
+## Objectives
 
-https://space-facts.com/mars/ to obtain the table containing facts about the planet including Diameter, Mass, etc.
+### Step 1 - Scraping
 
+#### NASA Mars News
 
-### Mars Hemispheres
+* Scrape the NASA Mars News Site and collect the latest News Title and Paragraph Text
 
-https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars to obtain high resolution images for each of Mar's hemispheres.
+#### JPL Mars Space Images - Featured Image
 
+* Visit the URL for the JPL Featured Space Image
+* Use Splinter to navigate the site and find the image URL for the current Featured Mars Image and assign the URL string to a variable called `featured_image_url`
+* Make sure to find the image URL to the full size `.jpg` image
+* Make sure to save a complete URL string for this image
 
-## Flask
+#### Mars Facts
 
-* A python script to run all of the scraping code was designed and all of the scraped data was put into one Python dictionary.
+* Visit the Mars Facts webpage and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
+* Use Pandas to convert the data to a HTML table string
 
-* '/scrape' route which will import the Python script and call the scrape function was created.
+#### Mars Hemispheres
 
+* Visit the USGS Astrogeology site to obtain high resolution images for each of Mar's hemispheres
+* Save both the image URL string for the full resolution hemisphere image, and the Hemisphere title containing the hemisphere name. 
+    * Use a Python dictionary to store the data using the keys `img_url` and `title`
+* Append the dictionary with the image URL string and the hemisphere title to a list
+    * This list will contain one dictionary for each hemisphere
 
-## MongoDB:
+### Step 2 - MongoDB and Flask Application
 
-* A new database and a new collection was created.
-
-* All of the scraped data was stored in the above created database.
-
-* Root route / that will query the database and pass the mars data into HTML template was created.
-
-
-## HTML file
-
-Finally a HTML file called 'index.html' was created that displayed all of the data in HTML elements.
-
-
-![final_app_part1.png](Images/final_app_part1.png)
-![final_app_part2.png](Images/final_app_part2.png)
-
+* Use MongoDB with Flask templating to create a new HTML page that displays all of the information that was scraped from the URLs above
+* Convert Jupyter Notebook into a Python Script called `scrape_mars.py` with a function called `scrape` that will execute all of the scraping code from above and return one Python Dictionary containing all of the scraped data
+* Create a route called `/scrape` that will import the `scrape_mars.py` script and call the `scrape` function
+    * Store the return value in Mongo as a Python Dictionary
+* Create a root route `/` that will query the Mongo database and pass the Mars Data into an HTML template to display the data
+* Create a template HTML file called `index.html` that will take the Mars Data Dictionary and display all of the data in the appropriate HTML elements
