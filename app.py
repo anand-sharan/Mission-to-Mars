@@ -33,7 +33,7 @@ def init_browser():
 #################################################
 # PyMongo Connection Setup
 #################################################
-app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_db"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_app"
 mongo = PyMongo(app)
 
 #################################################
@@ -53,7 +53,11 @@ def scrapper():
     mars_data = scrape_mars.scrape_all()
     mars.update({}, mars_data, upsert=True)
 
-    return "Scraping Successful! Hit Back Button Now to view data"
+    mars = mongo.db.mars.find_one()
+    print(mars)
+    return render_template("index.html", mars=mars)
+    #index()
+    #return "Scraping Successful! Hit Back Button Now to view data"
 
 # Define Main Behavior
 if __name__ == "__main__":

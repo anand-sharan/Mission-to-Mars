@@ -11,10 +11,11 @@
 <body class="text-white" style="background-color: black;">
     <div class="container">
         <!-- Jumbotron -->
-        <!--IMAGES: https://images5.alphacoders.com/508/508358.jpg / https://vfxblog.com/wp-content/uploads/2016/12/marsattacks1b.jpg / https://i.gifer.com/embedded/download/NRfS.gif -->
-        <div class="jumbotron text-center" style="background-image: url(http://gortoncenter.org/wp-content/uploads/2018/05/The-Martian.jpg); height: 400px; background-position: center; background-size: cover;">
+        <!--IMAGES: https://images5.alphacoders.com/508/508358.jpg / https://vfxblog.com/wp-content/uploads/2016/12/marsattacks1b.jpg / https://i.gifer.com/embedded/download/NRfS.gif 
+        url(http://gortoncenter.org/wp-content/uploads/2018/05/The-Martian.jpg) -->
+        <div class="jumbotron text-center" style="background-image: url(https://anand-sharan.github.io/Resources/assets/images/mission_to_mars.png); height: 400px; background-position: center; background-size: cover;">
             <h1 class="display-3"><b>Mission to Mars</b></h1>
-            <p><a class="btn btn-danger btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+            <p><a class="btn btn-danger btn-lg" href="/" role="button">Scrape New Data</a></p>
         </div>
         <!-- NASA Mars News -->
         <div class="container">
@@ -32,7 +33,7 @@
         <div class="container">
             <div class="row" id="mars-featured-image">
                 <div class="col-lg-8 col-md-8 col-sm-12">
-                <h4>Featured Mars Image</h4>
+                <h4>Featured Image on JPL Mars Online Landing Page</h4>
                     <!-- If Images are False/None/Non-Existent, Then Default to Error Message -->
                     <img src="{{mars.featured_image | default('static/images/error.png', true) }}" class="img-responsive" style="max-width:100%; max-height: auto;" alt="Mars Featured Image"/>
                 </div>
