@@ -42,3 +42,7 @@ Build a Web Application that Scrapes Various Websites for Data Related to the Mi
     * Store the return value in Mongo as a Python Dictionary
 * Create a root route `/` that will query the Mongo database and pass the Mars Data into an HTML template to display the data
 * Create a template HTML file called `index.html` that will take the Mars Data Dictionary and display all of the data in the appropriate HTML elements
+
+### Execution Steps:
+1. Execute `python app.py`file, and open chrome browser and visit url: https://127.0.0.1:5000/
+2. Click on `Scarpe New Data` to Scarpe Mars Data.
